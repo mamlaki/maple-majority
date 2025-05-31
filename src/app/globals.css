@@ -41,6 +41,13 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Party Colours */
+  --color-liberal: #EA6D6A;
+  --color-conservative: #6495ED;
+  --color-ndp: #F4A460;
+  --color-bloc: #87CEFA;
+  --color-green: #99C955;
 }
 
 :root {
