@@ -7,6 +7,16 @@ export interface Party {
     ideology: string
 }
 
+export interface PartyLeader {
+    name: string
+    imageUrl?: string
+}
+
+export interface ElectionParty extends Party {
+    leader: PartyLeader
+    incumbent?: boolean
+}
+
 // Available Political Parties
 export const PARTIES: Party[] = [
     {
@@ -50,3 +60,83 @@ export const PARTIES: Party[] = [
         ideology: 'Green politics'
     }
 ]
+
+// Party Leaders For Each Election
+export const ELECTION_PARTY_LEADERS: Record<number, Record<string, PartyLeader>> = {
+    2025: {
+        liberal: { name: 'Mark Carney' },
+        conservative: { name: 'Pierre Poilievre' },
+        ndp: { name: 'Jagmeet Singh' },
+        bloc: { name: 'Yves-François Blanchet' },
+        green: { name: 'Elizabeth May & Jonathan Pedneault' }
+    },
+    2021: {
+        liberal: { name: 'Justin Trudeau' },
+        conservative: { name: 'Erin O\'Toole' },
+        ndp: { name: 'Jagmeet Singh' },
+        bloc: { name: 'Yves-François Blanchet' },
+        green: { name: 'Annamie Paul' }
+    },
+    2019: {
+        liberal: { name: 'Justin Trudeau' },
+        conservative: { name: 'Andrew Scheer' },
+        ndp: { name: 'Jagmeet Singh' },
+        bloc: { name: 'Yves-François Blanchet' },
+        green: { name: 'Elizabeth May' }
+    },
+    2015: {
+        liberal: { name: 'Justin Trudeau' },
+        conservative: { name: 'Stephen Harper' },
+        ndp: { name: 'Thomas Mulcair' },
+        bloc: { name: 'Gilles Duceppe' },
+        green: { name: 'Elizabeth May' }
+    },
+    2011: {
+        liberal: { name: 'Michael Ignatieff' },
+        conservative: { name: 'Stephen Harper' },
+        ndp: { name: 'Jack Layton' },
+        bloc: { name: 'Gilles Duceppe' },
+        green: { name: 'Elizabeth' }
+    },
+    2008: {
+        liberal: { name: 'Stéphen Dion' },
+        conservative: { name: 'Stephen Harper' },
+        ndp: { name: 'Jack Layton' },
+        bloc: { name: 'Gilles Duceppe' },
+        green: { name: 'Elizabeth May' }
+    },
+    2006: {
+        liberal: { name: 'Paul Martin' },
+        conservative: { name: 'Stephen Harper' },
+        ndp: { name: 'Jack Layton' },
+        bloc: { name: 'Gilles Duceppe' }
+    }
+}
+
+// Get party leader for specific election
+export function getElectionParties(electionYear: number): ElectionParty[] {
+    const leaders = ELECTION_PARTY_LEADERS[electionYear];
+    if (!leaders) {
+        throw new Error(`No leadership data available for ${electionYear}`)
+    }
+
+    return PARTIES.map(party => ({
+        ...party,
+        leader: leaders[party.id],
+        incumbent: getIncumbentStatus(party.id, electionYear)
+    }))
+}
+
+function getIncumbentStatus(partyId: string, electionYear: number): boolean {
+    const incumbents: Record<number, string> = {
+        2025: 'liberal',
+        2021: 'liberal',
+        2019: 'liberal',
+        2015: 'conservative',
+        2011: 'conservative',
+        2008: 'conservative',
+        2006: 'liberal'
+    }
+
+    return incumbents[electionYear] === partyId
+}
