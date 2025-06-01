@@ -50,14 +50,3 @@ export const PARTIES: Party[] = [
         ideology: 'Green politics'
     }
 ]
-
-// Election Year Scenario(s) Selection Options
-export const ELECTION_YEARS = [
-    { year: 2025, description: 'Strong and Free'},
-    { year: 2021, description: 'Amidst a Pandemic'},
-    { year: 2019, description: 'Red Retreat'},
-    { year: 2015, description: 'Sunny Ways' },
-    { year: 2011, description: 'Orange Wave' },
-    { year: 2008, description: 'Financial Crisis' },
-    { year: 2006, description: 'Blue Breakthrough' }
-]
