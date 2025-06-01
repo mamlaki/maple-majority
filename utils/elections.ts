@@ -14,6 +14,8 @@ export interface ElectionData {
     majoritySeats: number
     called?: string
     held?: string
+    winningParty: string
+    governmentType: 'majority' | 'minority'
     historical?: HistoricalCampaignData
 }
 
@@ -26,6 +28,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 172,
         called: '2025-03-23',
         held: '2025-04-28',
+        winningParty: 'liberal',
+        governmentType: 'minority',
         historical: {
             campaignStartDate: '2025-03-23',
             campaignEndDate: '2025-04-28',
@@ -42,6 +46,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 170,
         called: '2021-8-15',
         held: '2021-09-20',
+        winningParty: 'liberal',
+        governmentType: 'minority',
         historical: {
             campaignStartDate: '2021-08-15',
             campaignEndDate: '2021-09-20',
@@ -58,6 +64,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 170,
         called: '2019-09-11',
         held: '2019-10-21',
+        winningParty: 'liberal',
+        governmentType: 'minority',
         historical: {
             campaignStartDate: '2019-09-11',
             campaignEndDate: '2019-10-21',
@@ -74,6 +82,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 170,
         called: '2015-08-04',
         held: '2015-10-19',
+        winningParty: 'liberal',
+        governmentType: 'majority',
         historical: {
             campaignStartDate: '2015-08-04',
             campaignEndDate: '2015-10-19',
@@ -90,6 +100,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 155,
         called: '2011-03-26',
         held: '2011-05-02',
+        winningParty: 'conservative',
+        governmentType: 'majority',
         historical: {
             campaignStartDate: '2011-03-26',
             campaignEndDate: '2011-05-02',
@@ -106,6 +118,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 155,
         called: '2008-09-07',
         held: '2008-10-14',
+        winningParty: 'conservative',
+        governmentType: 'minority',
         historical: {
             campaignStartDate: '2008-09-07',
             campaignEndDate: '2008-10-14',
@@ -122,6 +136,8 @@ export const ELECTIONS: ElectionData[] = [
         majoritySeats: 155,
         called: '2005-11-29',
         held: '2006-01-23',
+        winningParty: 'conservative',
+        governmentType: 'minority',
         historical: {
             campaignStartDate: '2005-11-29',
             campaignEndDate: '2006-01-23',
