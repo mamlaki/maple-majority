@@ -12,8 +12,8 @@ export interface ElectionData {
     description: string
     totalSeats: number
     majoritySeats: number
-    called?: string
-    held?: string
+    called: string
+    held: string
     winningParty: string
     governmentType: 'majority' | 'minority'
     historical?: HistoricalCampaignData
@@ -23,7 +23,7 @@ export const ELECTIONS: ElectionData[] = [
     {
         year: 2025,
         name: 'Strong and Free',
-        description: '...',
+        description: 'Following Justin Trudeau\'s resignation, the new Liberal leader and Prime Minister Mark Carney called a snap election for April 28, 2025. The campaign played out amid U.S. tensions, rising tariffs, and nationalistic fervor. At home, voters faced affordability concerns and a redrawn 343-seat map. Meanwhile, the Conservatives led by Pierre Poilievre—once leading comfortably in the polls—saw their advantage shrink as the race tightened dramatically.',
         totalSeats: 343,
         majoritySeats: 172,
         called: '2025-03-23',

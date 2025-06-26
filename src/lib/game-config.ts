@@ -51,6 +51,8 @@ export function createGameConfig(
         throw new Error(`Election year ${electionYear} not found`)
     }
 
+    // Default/Standard Mode
+
     const baseConfig: GameConfig = {
         mode,
         totalSeats: election.totalSeats,
@@ -58,6 +60,12 @@ export function createGameConfig(
         pollingAccuracyRange: DEFAULT_GAME_CONFIG.pollingAccuracyRange!,
         totalWeeks: DEFAULT_GAME_CONFIG.totalWeeks!,
         debateWeek: DEFAULT_GAME_CONFIG.debateWeek
+    }
+
+    // Historical Mode
+    if (mode === 'historical' && election.historical) {
+        baseConfig.totalWeeks = election.historical.totalWeeks
+        baseConfig.debateWeek = election.historical.debateWeek
     }
 
     return baseConfig
